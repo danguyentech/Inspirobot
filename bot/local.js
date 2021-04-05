@@ -45,7 +45,7 @@ const getEncouragements= async()=> {
 }
 
 const deleteEncouragment=async(id)=> {
-  let response = await fetch(`${process.env.URL}/${id}`, {
+  let response = await fetch(`${process.env.URL}${id}`, {
     method: 'DELETE',
     headers:{
         "Content-type": "application/json"
@@ -88,7 +88,7 @@ client.on("message", msg => {
   }
 
   if (msg.content.startsWith("$del")) {
-    index = parseInt(msg.content.split("$del ")[1])
+    let index = parseInt(msg.content.split("$del ")[1])
     let properNumber=index-1
     if (isNaN(properNumber)){
       return msg.channel.send(`Sorry! This needs a number to delete a message. Try $del [number].`)
